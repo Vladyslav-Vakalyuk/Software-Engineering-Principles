@@ -1,0 +1,30 @@
+<?php
+function what_list_am_i_on(array $actions): string {
+  $letterNaughty = ['b', 'f', 'k'];
+  $letterNice = ['g', 's', 'n'];
+  $isNaughty = 0;
+  $isNice = 0;
+  foreach($actions as $sentence){
+  if(!isset($sentence[0])){
+    continie;
+  }
+      if(in_array($sentence[0], $letterNice)){
+        $isNice++;
+      }elseif(in_array($sentence[0], $letterNaughty)){
+        $isNaughty++;
+      }
+  }
+  return $isNice > $isNaughty ? "nice" : 'naughty';
+}
+
+
+
+/////////////
+
+//class NaughtyOrNiceTest extends TestCase {
+//  public function testFixed() {
+//    $this->assertEquals("naughty", what_list_am_i_on(['broke someone\'s window', 'fought over a toaster', 'killed a bug']));
+//    $this->assertEquals("nice", what_list_am_i_on(["got someone a new car", "saved a man from drowning", "never got into a fight"]));
+//    $this->assertEquals("naughty", what_list_am_i_on(["broke a vending machine", "never got into a fight", "tied someone's shoes"]));
+//  }
+//}

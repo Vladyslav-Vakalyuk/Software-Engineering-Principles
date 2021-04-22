@@ -14,7 +14,12 @@ class NodeChecker {
 	 * @var $node
 	 */
 	private $node;
-
+	
+	/**
+	 * counter
+	 * 
+	 * @var int $counter 
+	 */
 	private $counter = 1;
 
 	public function upCount() {

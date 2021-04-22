@@ -1,9 +1,7 @@
 <?php
 function loop_size( Node $node ): int {
-
 	$nodeChecker = new NodeChecker();
 	$nodeChecker->init( $node );
-
 }
 
 /**
@@ -16,6 +14,16 @@ class NodeChecker {
 	 * @var $node
 	 */
 	private $node;
+
+	private $counter = 1;
+
+	public function upCount() {
+		$this->counter ++;
+	}
+
+	public function getCount() {
+		return $this->counter;
+	}
 
 	/**
 	 * @param $node
@@ -40,7 +48,8 @@ class NodeChecker {
 			$currentNode[] = $node;
 			$node          = $node->getNext();
 			if ( $this->compareCurrentNode( $node, $currentNode ) ) {
-				return $this->searchLoop( $node, $currentNode );
+
+				return $this->searchLoop( $node );
 			}
 		}
 
@@ -63,23 +72,19 @@ class NodeChecker {
 	 * searchLoop.
 	 *
 	 * @param $node
-	 * @param $currentNode
 	 *
 	 * @return int
 	 */
-	public function searchLoop( $node, $currentNode ) {
-		$i            = 1;
-		$lastkey      = array_key_last( $currentNode );
-		$lastNode     = $currentNode[ $lastkey ];
+	public function searchLoop( $node ) {
 		$searchNode   = $node->getNext();
-		$selecterNode = $searchNode;
+		$selectedNode = $searchNode;
 		while ( $searchNode->getNext() ) {
 			$searchNode = $searchNode->getNext();
-			if ( $selecterNode === $searchNode ) {
+			if ( $selectedNode === $searchNode ) {
 
-				return $i;
+				return $this->getCount();
 			}
-			$i ++;
+			$this->upCount();
 		}
 	}
 

@@ -154,7 +154,7 @@ class SeatChecker {
 	 * @return bool
 	 */
 	public function compareByLetter( $seatLetter, $letterCompare ) {
-		return strpos( $seatLetter, $letterCompare[0] ) > 0 || strpos( $seatLetter, $letterCompare[1] ) > 0 ? true : false;
+		return  strtoupper ($seatLetter ) > $letterCompare[0] && strtoupper ( $seatLetter ) < $letterCompare[1];
 	}
 
 	/**
